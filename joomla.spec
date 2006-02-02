@@ -1,7 +1,7 @@
 Summary:	Content management system
 Name:		joomla
 Version:	1.0.7
-Release:	0.4
+Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 # http://developer.joomla.org/sf/frs/do/downloadFile/projects.joomla/frs.joomla_1_0.1_0_7/frs3338
