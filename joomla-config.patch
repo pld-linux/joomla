@@ -1,0 +1,33 @@
+--- joomla-1.0.7/configuration.php-dist.orig	2006-01-16 10:17:12.000000000 +0100
++++ joomla-1.0.7/configuration.php-dist	2006-02-02 18:41:11.000000000 +0100
+@@ -23,9 +23,9 @@
+ */
+ $mosConfig_offline = '0';
+ $mosConfig_host = 'localhost';	// This is normally set to localhost
+-$mosConfig_user = '';			// MySQL username
+-$mosConfig_password = '';		// MySQL password
+-$mosConfig_db = '';				// MySQL database name
++$mosConfig_user = 'joomlauser';		// MySQL username
++$mosConfig_password = 'joomlapass';	// MySQL password
++$mosConfig_db = 'joomla';		// MySQL database name
+ $mosConfig_dbprefix = 'jos_';	// Do not change unless you need to!
+ /**
+ * -------------------------------------------------------------------------
+@@ -33,7 +33,7 @@
+ * -------------------------------------------------------------------------
+ */
+ $mosConfig_lang = 'english';				// Site language
+-$mosConfig_absolute_path = '/path/to/joomla/install';	// No trailing slash
++$mosConfig_absolute_path = '@JOOMLADIR@';	// No trailing slash
+ $mosConfig_live_site = 'http://your_joomla_site.com';	// No trailing slash
+ $mosConfig_sitename = 'Joomla';				// Name of Joomla site
+ $mosConfig_shownoauth = '1';				// Display links & categories users don't have access to
+@@ -68,7 +68,7 @@
+ $mosConfig_link_titles = '0';
+ $mosConfig_list_limit = '30';
+ $mosConfig_caching = '0';
+-$mosConfig_cachepath = '/path/to/joomla/install/cache';
++$mosConfig_cachepath = '@JOOMLADATA@/cache';
+ $mosConfig_cachetime = '900';
+ $mosConfig_mailer = 'mail';
+ $mosConfig_mailfrom = '';
