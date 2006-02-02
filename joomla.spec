@@ -7,6 +7,7 @@ Group:		Applications/Databases/Interfaces
 # http://developer.joomla.org/sf/frs/do/downloadFile/projects.joomla/frs.joomla_1_0.1_0_7/frs3338
 Source0:	Joomla_%{version}-Stable-Full_Package.tar.bz2
 # Source0-md5:	a1ba209fb7ba2d73670fdb8106f2079e
+# http://www.joomla.pl/index.php/component/option,com_remository/Itemid,15/func,select/id,6/
 Source1:	Joomla_1.0.0_Polish_ISO-2.zip
 # Source1-md5:	7e9075c6d7b9520898d56ee123d50484
 Source2:	%{name}-http.conf
@@ -39,6 +40,7 @@ Joomla! is easy to install, simple to manage, and reliable.
 %setup -q -c
 %patch0 -p1
 %patch1 -p1
+unzip %{SOURCE1} -d language/
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -60,7 +62,7 @@ sed -e 's|@JOOMLADIR@|%{_joomladir}|g' -e 's|@JOOMLADATA@|%{_joomladata}|g' \
 	$RPM_BUILD_ROOT%{_joomladir}/configuration.php-dist > $RPM_BUILD_ROOT%{_sysconfdir}/configuration.php
 ln -sf %{_sysconfdir}/configuration.php $RPM_BUILD_ROOT%{_joomladir}/configuration.php
 
-install %{SOURCE1} $RPM_BUILD_ROOT/%{_sysconfdir}/httpd.conf
+install %{SOURCE2} $RPM_BUILD_ROOT/%{_sysconfdir}/httpd.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
