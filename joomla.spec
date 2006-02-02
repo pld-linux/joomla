@@ -44,13 +44,12 @@ install -d $RPM_BUILD_ROOT{%{_joomladir},%{_sysconfdir}} \
 # Instalation:
 cp -R * $RPM_BUILD_ROOT%{_joomladir}
 
-mv -f $RPM_BUILD_ROOT%{_joomladir}/administrator/backups $RPM_BUILD_ROOT%{_joomladata}/administrator/
-mv -f $RPM_BUILD_ROOT%{_joomladir}/{cache,images,media} $RPM_BUILD_ROOT%{_joomladata}/
-ln -sf %{_joomladata}/administrator/backups $RPM_BUILD_ROOT%{_joomladir}/administrator/backups
-ln -sf %{_joomladata}/cache $RPM_BUILD_ROOT%{_joomladir}/cache
-ln -sf %{_joomladata}/images $RPM_BUILD_ROOT%{_joomladir}/images
-ln -sf %{_joomladata}/media $RPM_BUILD_ROOT%{_joomladir}/media
-ln -sf %{_joomladata}/uploadfiles $RPM_BUILD_ROOT%{_joomladir}/uploadfiles
+mv -f $RPM_BUILD_ROOT%{_joomladir}/administrator/{backups,components,modules,templates} \
+	$RPM_BUILD_ROOT%{_joomladata}/administrator/
+mv -f $RPM_BUILD_ROOT%{_joomladir}/{cache,components,images,language,mambots,media,modules,templates} \
+	$RPM_BUILD_ROOT%{_joomladata}/
+ln -sf %{_joomladata}/administrator/{backups,components,modules,templates} $RPM_BUILD_ROOT%{_joomladir}/administrator/
+ln -sf %{_joomladata}/{cache,components,images,language,mambots,media,modules,templates} $RPM_BUILD_ROOT%{_joomladir}/
 
 # Play with configs:
 sed -e 's|@JOOMLADIR@|%{_joomladir}|g' -e 's|@JOOMLADATA@|%{_joomladata}|g' \
@@ -75,26 +74,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf
 %dir %{_joomladir}
 %{_joomladir}/*
-%attr(771,root,http) %dir %{_joomladata}
-%attr(771,root,http) %dir %{_joomladata}/administrator
-%attr(771,root,http) %dir %{_joomladata}/administrator/backups
-%attr(771,root,http) %dir %{_joomladata}/cache
-%attr(771,root,http) %dir %{_joomladata}/images
-%attr(771,root,http) %dir %{_joomladata}/images/M_images
-%attr(771,root,http) %dir %{_joomladata}/images/banners
-%attr(771,root,http) %dir %{_joomladata}/images/smilies
-%attr(771,root,http) %dir %{_joomladata}/images/stories
-%attr(771,root,http) %dir %{_joomladata}/images/stories/food
-%attr(771,root,http) %dir %{_joomladata}/images/stories/fruit
-%attr(771,root,http) %dir %{_joomladata}/media
-%attr(771,root,http) %dir %{_joomladata}/uploadfiles
-%dir %{_joomladata}/administrator/backups/*
-%dir %{_joomladata}/cache/*
-%dir %{_joomladata}/images/*.*
-%dir %{_joomladata}/images/M_images/*
-%dir %{_joomladata}/images/banners/*
-%dir %{_joomladata}/images/smilies/*
-%dir %{_joomladata}/images/stories/*.*
-%dir %{_joomladata}/images/stories/food/*
-%dir %{_joomladata}/images/stories/fruit/*
-%dir %{_joomladata}/media/*
+%defattr(644,root,http,775)
+%dir %{_joomladata}
+%{_joomladata}/*
