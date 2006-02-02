@@ -1,7 +1,7 @@
 Summary:	Content management system
 Name:		joomla
 Version:	1.0.7
-Release:	0.1
+Release:	0.3
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 # http://developer.joomla.org/sf/frs/do/downloadFile/projects.joomla/frs.joomla_1_0.1_0_7/frs3338
@@ -9,6 +9,7 @@ Source0:	Joomla_%{version}-Stable-Full_Package.tar.bz2
 # Source0-md5:	a1ba209fb7ba2d73670fdb8106f2079e
 Source1:	%{name}-http.conf
 Patch0:		%{name}-config.patch
+Patch1:		%{name}-install.patch
 URL:		http://www.joomla.org/
 Requires:	php
 Requires:	php-gd
@@ -70,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %dir %{_sysconfdir}
-%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/configuration.php
+%attr(660,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/configuration.php
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf
 %dir %{_joomladir}
 %{_joomladir}/*
