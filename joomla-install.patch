@@ -1,0 +1,76 @@
+diff -ur joomla-1.0.7/administrator/index.php joomla-1.0.7-inst/administrator/index.php
+--- joomla-1.0.7/administrator/index.php	2006-01-16 10:17:12.000000000 +0100
++++ joomla-1.0.7-inst/administrator/index.php	2006-02-02 19:57:37.000000000 +0100
+@@ -24,11 +24,11 @@
+ include_once ( $mosConfig_absolute_path . '/language/'. $mosConfig_lang .'.php' );
+ 
+ //Installation sub folder check, removed for work with SVN
+-if (file_exists( '../installation/index.php' )) {
+-	define( '_INSTALL_CHECK', 1 );
+-	include ('../offline.php');
+-	exit();
+-}
++//if (file_exists( '../installation/index.php' )) {
++//	define( '_INSTALL_CHECK', 1 );
++//	include ('../offline.php');
++//	exit();
++//}
+ 
+ $option = mosGetParam( $_REQUEST, 'option', NULL );
+ 
+diff -ur joomla-1.0.7/index.php joomla-1.0.7-inst/index.php
+--- joomla-1.0.7/index.php	2006-01-16 10:17:12.000000000 +0100
++++ joomla-1.0.7-inst/index.php	2006-02-02 19:54:22.000000000 +0100
+@@ -26,11 +26,11 @@
+ require_once( 'includes/joomla.php' );
+ 
+ //Installation sub folder check, removed for work with SVN
+-if (file_exists( 'installation/index.php' )) {
+-	define( '_INSTALL_CHECK', 1 );
+-	include ('offline.php');
+-	exit();
+-}
++//if (file_exists( 'installation/index.php' )) {
++//	define( '_INSTALL_CHECK', 1 );
++//	include ('offline.php');
++//	exit();
++//}
+ 
+ 
+ // displays offline/maintanance page or bar
+diff -ur joomla-1.0.7/installation/index.php joomla-1.0.7-inst/installation/index.php
+--- joomla-1.0.7/installation/index.php	2006-01-16 10:17:12.000000000 +0100
++++ joomla-1.0.7-inst/installation/index.php	2006-02-02 19:54:31.000000000 +0100
+@@ -11,10 +11,10 @@
+ * See COPYRIGHT.php for copyright notices and details.
+ */
+ 
+-if (file_exists( '../configuration.php' ) && filesize( '../configuration.php' ) > 10) {
+-	header( "Location: ../index.php" );
+-	exit();
+-}
++//if (file_exists( '../configuration.php' ) && filesize( '../configuration.php' ) > 10) {
++//	header( "Location: ../index.php" );
++//	exit();
++//}
+ require_once( '../includes/version.php' );
+ 
+ /** Include common.php */
+diff -ur joomla-1.0.7/installation/install.php joomla-1.0.7-inst/installation/install.php
+--- joomla-1.0.7/installation/install.php	2006-01-16 10:17:12.000000000 +0100
++++ joomla-1.0.7-inst/installation/install.php	2006-02-02 19:54:38.000000000 +0100
+@@ -11,10 +11,10 @@
+ * See COPYRIGHT.php for copyright notices and details.
+ */
+ 
+-if (file_exists( '../configuration.php' ) && filesize( '../configuration.php' ) > 10) {
+-	header( 'Location: ../index.php' );
+-	exit();
+-}
++//if (file_exists( '../configuration.php' ) && filesize( '../configuration.php' ) > 10) {
++//	header( 'Location: ../index.php' );
++//	exit();
++//}
+ /** Include common.php */
+ include_once( 'common.php' );
+ function writableCell( $folder ) {
