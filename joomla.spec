@@ -1,4 +1,5 @@
 Summary:	Content management system
+Summary(pl):	System zarz±dzania tre¶ci±
 Name:		joomla
 Version:	1.0.7
 Release:	1
@@ -36,11 +37,17 @@ Systems on the planet. It is used all over the world for everything
 from simple websites to complex corporate applications.
 Joomla! is easy to install, simple to manage, and reliable. 
 
+%description -l pl
+Joomla! to jeden z najpotê¿niejszych systemów zarz±dzania tre¶ci± z
+otwartymi ¼ród³ami. Jest u¿ywana na ca³ym ¶wiecie do wszystkiego od
+prostych stron WWW do z³o¿onych aplikacji korporacyjnych. Joomla!
+jest ³atwa w instalacji, prosta w zarz±dzaniu i niezawodna.
+
 %prep
 %setup -q -c
 %patch0 -p1
 %patch1 -p1
-unzip %{SOURCE1} -d language/
+unzip %{SOURCE1} -d language
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -51,11 +58,11 @@ install -d $RPM_BUILD_ROOT{%{_joomladir},%{_sysconfdir}} \
 cp -R * $RPM_BUILD_ROOT%{_joomladir}
 
 mv -f $RPM_BUILD_ROOT%{_joomladir}/administrator/{backups,components,modules,templates} \
-	$RPM_BUILD_ROOT%{_joomladata}/administrator/
+	$RPM_BUILD_ROOT%{_joomladata}/administrator
 mv -f $RPM_BUILD_ROOT%{_joomladir}/{cache,components,images,language,mambots,media,modules,templates} \
-	$RPM_BUILD_ROOT%{_joomladata}/
-ln -sf %{_joomladata}/administrator/{backups,components,modules,templates} $RPM_BUILD_ROOT%{_joomladir}/administrator/
-ln -sf %{_joomladata}/{cache,components,images,language,mambots,media,modules,templates} $RPM_BUILD_ROOT%{_joomladir}/
+	$RPM_BUILD_ROOT%{_joomladata}
+ln -sf %{_joomladata}/administrator/{backups,components,modules,templates} $RPM_BUILD_ROOT%{_joomladir}/administrator
+ln -sf %{_joomladata}/{cache,components,images,language,mambots,media,modules,templates} $RPM_BUILD_ROOT%{_joomladir}
 
 # Play with configs:
 sed -e 's|@JOOMLADIR@|%{_joomladir}|g' -e 's|@JOOMLADATA@|%{_joomladata}|g' \
