@@ -1,16 +1,14 @@
 Summary:	Content management system
 Summary(pl):	System zarz±dzania tre¶ci±
 Name:		joomla
-Version:	1.0.7
+Version:	1.0.10
 Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
-# http://developer.joomla.org/sf/frs/do/downloadFile/projects.joomla/frs.joomla_1_0.1_0_7/frs3338
+# http://developer.joomla.org/sf/frs/do/downloadFile/projects.joomla/frs.joomla_1_0.1_0_10/frs5789
 Source0:	Joomla_%{version}-Stable-Full_Package.tar.bz2
-# Source0-md5:	a1ba209fb7ba2d73670fdb8106f2079e
+# Source0-md5:	4c608dc14fe8952bd35803e5cc8f56cc
 # http://www.joomla.pl/index.php/component/option,com_remository/Itemid,15/func,select/id,6/
-Source1:	Joomla_1.0.0_Polish_ISO-2.zip
-# Source1-md5:	7e9075c6d7b9520898d56ee123d50484
 Source2:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-install.patch
@@ -47,7 +45,6 @@ jest ³atwa w instalacji, prosta w zarz±dzaniu i niezawodna.
 %setup -q -c
 %patch0 -p1
 %patch1 -p1
-unzip %{SOURCE1} -d language
 
 %install
 rm -rf $RPM_BUILD_ROOT

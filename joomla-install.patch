@@ -1,46 +1,43 @@
-diff -ur joomla-1.0.7/administrator/index.php joomla-1.0.7-inst/administrator/index.php
---- joomla-1.0.7/administrator/index.php	2006-01-16 10:17:12.000000000 +0100
-+++ joomla-1.0.7-inst/administrator/index.php	2006-02-02 19:57:37.000000000 +0100
+--- joomla-1.0.10/administrator/index.php.orig	2006-06-25 22:54:08.000000000 +0200
++++ joomla-1.0.10/administrator/index.php	2006-07-05 11:39:36.000000000 +0200
 @@ -24,11 +24,11 @@
  include_once ( $mosConfig_absolute_path . '/language/'. $mosConfig_lang .'.php' );
  
  //Installation sub folder check, removed for work with SVN
--if (file_exists( '../installation/index.php' )) {
+-if (file_exists( '../installation/index.php' ) && $_VERSION->SVN == 0) {
 -	define( '_INSTALL_CHECK', 1 );
--	include ('../offline.php');
+-	include ($mosConfig_absolute_path .'/offline.php');
 -	exit();
 -}
-+//if (file_exists( '../installation/index.php' )) {
++//if (file_exists( '../installation/index.php' ) && $_VERSION->SVN == 0) {
 +//	define( '_INSTALL_CHECK', 1 );
-+//	include ('../offline.php');
++//	include ($mosConfig_absolute_path .'/offline.php');
 +//	exit();
 +//}
  
- $option = mosGetParam( $_REQUEST, 'option', NULL );
+ $option = strtolower( strval( mosGetParam( $_REQUEST, 'option', NULL ) ) );
  
-diff -ur joomla-1.0.7/index.php joomla-1.0.7-inst/index.php
---- joomla-1.0.7/index.php	2006-01-16 10:17:12.000000000 +0100
-+++ joomla-1.0.7-inst/index.php	2006-02-02 19:54:22.000000000 +0100
+--- joomla-1.0.10/index.php.orig	2006-06-25 22:54:18.000000000 +0200
++++ joomla-1.0.10/index.php	2006-07-05 11:43:26.000000000 +0200
 @@ -26,11 +26,11 @@
  require_once( 'includes/joomla.php' );
  
  //Installation sub folder check, removed for work with SVN
--if (file_exists( 'installation/index.php' )) {
+-if (file_exists( 'installation/index.php' ) && $_VERSION->SVN == 0) {
 -	define( '_INSTALL_CHECK', 1 );
--	include ('offline.php');
+-	include ( $mosConfig_absolute_path .'/offline.php');
 -	exit();
 -}
-+//if (file_exists( 'installation/index.php' )) {
++//if (file_exists( 'installation/index.php' ) && $_VERSION->SVN == 0) {
 +//	define( '_INSTALL_CHECK', 1 );
-+//	include ('offline.php');
++//	include ( $mosConfig_absolute_path .'/offline.php');
 +//	exit();
 +//}
  
- 
  // displays offline/maintanance page or bar
-diff -ur joomla-1.0.7/installation/index.php joomla-1.0.7-inst/installation/index.php
---- joomla-1.0.7/installation/index.php	2006-01-16 10:17:12.000000000 +0100
-+++ joomla-1.0.7-inst/installation/index.php	2006-02-02 19:54:31.000000000 +0100
+ if ($mosConfig_offline == 1) {
+--- joomla-1.0.10/installation/index.php.orig	2006-07-05 11:46:36.000000000 +0200
++++ joomla-1.0.10/installation/index.php	2006-07-05 11:46:55.000000000 +0200
 @@ -11,10 +11,10 @@
  * See COPYRIGHT.php for copyright notices and details.
  */
@@ -56,9 +53,8 @@ diff -ur joomla-1.0.7/installation/index.php joomla-1.0.7-inst/installation/inde
  require_once( '../includes/version.php' );
  
  /** Include common.php */
-diff -ur joomla-1.0.7/installation/install.php joomla-1.0.7-inst/installation/install.php
---- joomla-1.0.7/installation/install.php	2006-01-16 10:17:12.000000000 +0100
-+++ joomla-1.0.7-inst/installation/install.php	2006-02-02 19:54:38.000000000 +0100
+--- joomla-1.0.10/installation/install.php.orig	2006-07-05 11:51:19.000000000 +0200
++++ joomla-1.0.10/installation/install.php	2006-07-05 11:51:40.000000000 +0200
 @@ -11,10 +11,10 @@
  * See COPYRIGHT.php for copyright notices and details.
  */
