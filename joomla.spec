@@ -1,3 +1,5 @@
+# TODO
+# - webapps
 Summary:	Content management system
 Summary(pl):	System zarz±dzania tre¶ci±
 Name:		joomla
@@ -15,12 +17,12 @@ Source2:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-install.patch
 URL:		http://www.joomla.org/
+Requires:	apache >= 2.0
 Requires:	php
 Requires:	php-gd
 Requires:	php-mysql
 Requires:	php-pcre
 Requires:	php-session
-Requires:	apache >= 2.0
 Requires:	webapps
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,14 +36,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Joomla! is one of the most powerful Open Source Content Management
 Systems on the planet. It is used all over the world for everything
-from simple websites to complex corporate applications.
-Joomla! is easy to install, simple to manage, and reliable. 
+from simple websites to complex corporate applications. Joomla! is
+easy to install, simple to manage, and reliable.
 
 %description -l pl
 Joomla! to jeden z najpotê¿niejszych systemów zarz±dzania tre¶ci± z
 otwartymi ¼ród³ami. Jest u¿ywana na ca³ym ¶wiecie do wszystkiego od
-prostych stron WWW do z³o¿onych aplikacji korporacyjnych. Joomla!
-jest ³atwa w instalacji, prosta w zarz±dzaniu i niezawodna.
+prostych stron WWW do z³o¿onych aplikacji korporacyjnych. Joomla! jest
+³atwa w instalacji, prosta w zarz±dzaniu i niezawodna.
 
 %prep
 %setup -q -c
@@ -69,7 +71,7 @@ sed -e 's|@JOOMLADIR@|%{_joomladir}|g' -e 's|@JOOMLADATA@|%{_joomladata}|g' \
 	$RPM_BUILD_ROOT%{_joomladir}/configuration.php-dist > $RPM_BUILD_ROOT%{_sysconfdir}/configuration.php
 ln -sf %{_sysconfdir}/configuration.php $RPM_BUILD_ROOT%{_joomladir}/configuration.php
 
-install %{SOURCE2} $RPM_BUILD_ROOT/%{_sysconfdir}/httpd.conf
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
