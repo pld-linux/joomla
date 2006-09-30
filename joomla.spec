@@ -1,5 +1,3 @@
-# TODO
-# - webapps
 Summary:	Content management system
 Summary(pl):	System zarz±dzania tre¶ci±
 Name:		joomla
