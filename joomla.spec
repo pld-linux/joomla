@@ -2,7 +2,7 @@ Summary:	Content management system
 Summary(pl):	System zarz±dzania tre¶ci±
 Name:		joomla
 Version:	1.0.10
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 # http://developer.joomla.org/sf/frs/do/downloadFile/projects.joomla/frs.joomla_1_0.1_0_10/frs5789
@@ -16,12 +16,12 @@ Patch0:		%{name}-config.patch
 Patch1:		%{name}-install.patch
 URL:		http://www.joomla.org/
 Requires:	apache >= 2.0
-Requires:	php
-Requires:	php-gd
-Requires:	php-mysql
-Requires:	php-pcre
-Requires:	php-session
+Requires:	php(gd)
+Requires:	php(mysql)
+Requires:	php(pcre)
+Requires:	php(session)
 Requires:	webapps
+Requires:	webserver(php)
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
