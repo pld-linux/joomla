@@ -1,5 +1,5 @@
 Summary:	Content management system
-Summary(pl.UTF-8):   System zarządzania treścią
+Summary(pl.UTF-8):	System zarządzania treścią
 Name:		joomla
 Version:	1.0.10
 Release:	2
