@@ -1,13 +1,12 @@
 Summary:	Content management system
 Summary(pl.UTF-8):	System zarządzania treścią
 Name:		joomla
-Version:	1.0.10
-Release:	2
+Version:	1.0.12
+Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
-# http://developer.joomla.org/sf/frs/do/downloadFile/projects.joomla/frs.joomla_1_0.1_0_10/frs5789
-Source0:	Joomla_%{version}-Stable-Full_Package.tar.bz2
-# Source0-md5:	4c608dc14fe8952bd35803e5cc8f56cc
+Source0:	http://forge.joomla.org/sf/frs/do/downloadFile/projects.joomla/frs.joomla_1_0.1_0_12/frs8162?dl=1
+# Source0-md5:	bd97e3d144275bf7753ea627db45f750
 Source1:	Joomla_1.0.0_Polish_ISO-2.zip
 # Source1-md5:	7e9075c6d7b9520898d56ee123d50484
 # http://www.joomla.pl/index.php/component/option,com_remository/Itemid,15/func,select/id,6/
