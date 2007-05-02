@@ -12,10 +12,10 @@ Source1:	Joomla_1.0.0_Polish_ISO-2.zip
 # Source1-md5:	7e9075c6d7b9520898d56ee123d50484
 # http://www.joomla.pl/index.php/component/option,com_remository/Itemid,15/func,select/id,6/
 Source2:	%{name}-http.conf
+Source3:	%{name}-lighttpd.conf
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-install.patch
 URL:		http://www.joomla.org/
-Requires:	apache >= 2.0
 Requires:	php(gd)
 Requires:	php(mysql)
 Requires:	php(pcre)
@@ -70,6 +70,7 @@ sed -e 's|@JOOMLADIR@|%{_joomladir}|g' -e 's|@JOOMLADATA@|%{_joomladata}|g' \
 ln -sf %{_sysconfdir}/configuration.php $RPM_BUILD_ROOT%{_joomladir}/configuration.php
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
+install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/lighttpd.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -77,14 +78,21 @@ rm -rf $RPM_BUILD_ROOT
 %triggerin -- apache < 2.2.0, apache-base
 %webapp_register httpd %{_webapp}
 
+%triggerin -- lighttpd
+%webapp_register lighttpd %{_webapp}
+
 %triggerun -- apache < 2.2.0, apache-base
 %webapp_unregister httpd %{_webapp}
+
+%triggerun -- lighttpd 
+%webapp_unregister lighttpd %{_webapp}
 
 %files
 %defattr(644,root,root,755)
 %dir %{_sysconfdir}
 %attr(660,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/configuration.php
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf
+%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/lighttpd.conf
 %dir %{_joomladir}
 %{_joomladir}/*
 %defattr(644,root,http,775)
