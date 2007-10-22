@@ -5,9 +5,9 @@ Version:	1.0.13
 Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
-#Source0:	http://joomlacode.org/gf/download/frsrelease/4508/13215/Joomla_1.0.13-Stable-Full_Package.tar.bz2
-Source0:	Joomla_%{version}-Stable-Full_Package.tar.bz2
-# Source0-md5:	ed01a4269faf3851a9f8320ac4de12fc
+Source0:	http://joomlacode.org/gf/download/frsrelease/4508/13215/Joomla_%{version}-Stable-Full_Package.tar.bz2
+#Source0:	Joomla_%{version}-Stable-Full_Package.tar.bz2
+#Source0-md5:	ed01a4269faf3851a9f8320ac4de12fc
 Source1:	Joomla_1.0.0_Polish_ISO-2.zip
 # Source1-md5:	7e9075c6d7b9520898d56ee123d50484
 # http://www.joomla.pl/index.php/component/option,com_remository/Itemid,15/func,select/id,6/
