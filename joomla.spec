@@ -16,6 +16,9 @@ Source3:	%{name}-lighttpd.conf
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-install.patch
 URL:		http://www.joomla.org/
+# update to 1.5.7 is needed:
+# http://securitytracker.com/alerts/2008/Sep/1020843.html
+BuildRequires:	security(2008-September-7)
 Requires:	php(gd)
 Requires:	php(mysql)
 Requires:	php(pcre)
