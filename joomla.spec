@@ -2,7 +2,7 @@ Summary:	Content management system
 Summary(pl.UTF-8):	System zarządzania treścią
 Name:		joomla
 Version:	1.5.15
-Release:	1
+Release:	1.1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://joomlacode.org/gf/download/frsrelease/11396/45610/Joomla_%{version}-Stable-Full_Package.zip
