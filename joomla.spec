@@ -1,16 +1,15 @@
 Summary:	Content management system
 Summary(pl.UTF-8):	System zarządzania treścią
 Name:		joomla
-Version:	1.0.13
+Version:	1.5.15
 Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
-Source0:	http://joomlacode.org/gf/download/frsrelease/4508/13215/Joomla_%{version}-Stable-Full_Package.tar.bz2
-#Source0:	Joomla_%{version}-Stable-Full_Package.tar.bz2
-#Source0-md5:	ed01a4269faf3851a9f8320ac4de12fc
-Source1:	Joomla_1.0.0_Polish_ISO-2.zip
-# Source1-md5:	7e9075c6d7b9520898d56ee123d50484
-# http://www.joomla.pl/index.php/component/option,com_remository/Itemid,15/func,select/id,6/
+Source0:	http://joomlacode.org/gf/download/frsrelease/11396/45610/Joomla_%{version}-Stable-Full_Package.zip
+# Source0-md5:	5ea0f7ff0ea7c5398520c503cecc52c4
+Source1:	pl-PL.joomla1515_update_install.zip
+# Source1-md5:	f7b9b3ce54ba10ccf482ee792eeb90a8
+# http://www.joomla.pl
 Source2:	%{name}-http.conf
 Source3:	%{name}-lighttpd.conf
 Patch0:		%{name}-config.patch
@@ -18,7 +17,7 @@ Patch1:		%{name}-install.patch
 URL:		http://www.joomla.org/
 # update to 1.5.7 is needed:
 # http://securitytracker.com/alerts/2008/Sep/1020843.html
-BuildRequires:	security(2008-September-7)
+#BuildRequires:	security(2008-September-7)
 Requires:	php(gd)
 Requires:	php(mysql)
 Requires:	php(pcre)
@@ -49,7 +48,7 @@ prostych stron WWW do złożonych aplikacji korporacyjnych. Joomla! jest
 %prep
 %setup -q -c
 %patch0 -p1
-%patch1 -p1
+#%patch1 -p1
 unzip %{SOURCE1} -d language
 
 %install
@@ -62,11 +61,10 @@ cp -R * $RPM_BUILD_ROOT%{_joomladir}
 
 mv -f $RPM_BUILD_ROOT%{_joomladir}/administrator/{backups,components,modules,templates} \
 	$RPM_BUILD_ROOT%{_joomladata}/administrator
-mv -f $RPM_BUILD_ROOT%{_joomladir}/{cache,components,images,language,mambots,media,modules,templates} \
+mv -f $RPM_BUILD_ROOT%{_joomladir}/{cache,components,images,language,media,modules,templates} \
 	$RPM_BUILD_ROOT%{_joomladata}
 ln -sf %{_joomladata}/administrator/{backups,components,modules,templates} $RPM_BUILD_ROOT%{_joomladir}/administrator
-ln -sf %{_joomladata}/{cache,components,images,language,mambots,media,modules,templates} $RPM_BUILD_ROOT%{_joomladir}
-
+ln -sf %{_joomladata}/{cache,components,images,language,media,modules,templates} $RPM_BUILD_ROOT%{_joomladir}
 # Play with configs:
 sed -e 's|@JOOMLADIR@|%{_joomladir}|g' -e 's|@JOOMLADATA@|%{_joomladata}|g' \
 	$RPM_BUILD_ROOT%{_joomladir}/configuration.php-dist > $RPM_BUILD_ROOT%{_sysconfdir}/configuration.php
