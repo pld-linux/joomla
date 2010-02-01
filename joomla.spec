@@ -18,6 +18,7 @@ URL:		http://www.joomla.org/
 # update to 1.5.7 is needed:
 # http://securitytracker.com/alerts/2008/Sep/1020843.html
 #BuildRequires:	security(2008-September-7)
+BuildRequires:	unzip
 Requires:	php(gd)
 Requires:	php(mysql)
 Requires:	php(pcre)
@@ -85,7 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %triggerun -- apache < 2.2.0, apache-base
 %webapp_unregister httpd %{_webapp}
 
-%triggerun -- lighttpd 
+%triggerun -- lighttpd
 %webapp_unregister lighttpd %{_webapp}
 
 %files
