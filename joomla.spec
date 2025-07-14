@@ -48,7 +48,7 @@ prostych stron WWW do złożonych aplikacji korporacyjnych. Joomla! jest
 
 %prep
 %setup -q -c
-%patch0 -p1
+%patch -P0 -p1
 #%patch1 -p1
 unzip %{SOURCE1} -d language
 
